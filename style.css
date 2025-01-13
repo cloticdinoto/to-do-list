@@ -1,0 +1,11 @@
+li{
+    user-select: none;
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+.checked{
+    text-decoration: line-through;
+}
