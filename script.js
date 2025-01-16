@@ -5,18 +5,25 @@ const ul = document.getElementById('unordered');
 loadTask();
 // adds a task
 function addEntry() {
+    //creates text and adds it into the li element
     const trimmedText = input.value.trim()
     const list = document.createElement("li");
-    list.innerHTML = `<li>${trimmedText}</li>`;
+    list.innerHTML = `${trimmedText}`;
+
+    //creates a span element
+    const span = document.createElement("span");
+    span.innerHTML = `&#x2715`;
     if (trimmedText === "") {
         alert("You must enter text if you want to add it to your list!")
     } else {
         ul.appendChild(list);
+        ul.appendChild(span)
         input.value = "";
         localStorage.setItem("taskList", ul.innerHTML);
         console.log("Added task: " + trimmedText);
     }
 }
+
 // line through text
     ul.addEventListener("click", function(event) {
     if (event.target.tagName === "LI") {
@@ -24,9 +31,14 @@ function addEntry() {
     }
   });
 
-//prio 1
-// crossmark next to task to delete task
-
+// removes a task
+ul.addEventListener("click", function(event) {
+    if (event.target.tagName === "SPAN") {
+        event.target.previousElementSibling.remove();
+        event.target.remove();
+        localStorage.setItem("taskList", ul.innerHTML);
+    }
+});
 
 // localStorage
 function loadTask() {
@@ -39,4 +51,3 @@ function handleKeyPress(event) {
         addEntry();
     }
 }
-

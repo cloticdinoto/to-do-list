@@ -10,13 +10,15 @@
 
 <body>
 
-    <input type="text" id="input" onkeydown="handleKeyPress(event)">
-    <button type="submit" id="button" onclick="addEntry()">Submit</button>
-    <br>
+    <div class="to-do-list">
+        <input type="text" id="input" onkeydown="handleKeyPress(event)" autocomplete="off">
+        <button type="submit" id="button" onclick="addEntry()">Submit</button>
+        <br>
 
-    <ul id="unordered">
+        <ul id="unordered">
 
-    </ul>
+        </ul>
+    </div>
 
     <script src="script.js"></script>
 </body>
